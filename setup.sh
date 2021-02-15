@@ -37,7 +37,7 @@ if [ ! "$(docker ps -q -f name=${SURICATA_CONTAINER_NAME})" ]; then
     ${HOME_ROOT_OVERRIDE} docker run --privileged -d --restart=on-failure:5 --name ${SURICATA_CONTAINER_NAME} \
     --net=host --cap-add=net_admin --cap-add=sys_nice \
     -v /var/log/suricata:/var/log/suricata -v /etc/gcloud:/etc/gcloud \
-    -e GCSFUSE_BUCKET=suricata-log -e GCSFUSE_ARGS="--limit-ops-per-sec 100" -e GOOGLE_APPLICATION_CREDENTIALS=/etc/gcloud/service-account.json \
+    -e GCSFUSE_BUCKET=[your suricata log bucket name] -e GCSFUSE_ARGS="--limit-ops-per-sec 100" -e GOOGLE_APPLICATION_CREDENTIALS=/etc/gcloud/service-account.json \
     -e SURICATA_OPTIONS="-i eth0 --set outputs.1.eve-log.enabled=no --set stats.enabled=no --set http-log.enabled=yes --set tls-log.enabled=yes" \
     ${SURICATA_IMAGE}
 
