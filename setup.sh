@@ -32,7 +32,7 @@ if [ ! "$(docker ps -q -f name=${SURICATA_CONTAINER_NAME})" ]; then
     -H "Authorization: Bearer $(curl --silent --header  "Metadata-Flavor: Google" \
     http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token | grep -o '"access_token":"[^"]*' | cut -d'"' -f4)" \
     -o "/etc/gcloud/service-account.json" \
-    "https://www.googleapis.com/storage/v1/b/ids-setup/o/suricata-service-account.json?alt=media"
+    "https://www.googleapis.com/storage/v1/b/[bucket name]/o/[service account to run gcsfuse.json]?alt=media"
 
     ${HOME_ROOT_OVERRIDE} docker run --privileged -d --restart=on-failure:5 --name ${SURICATA_CONTAINER_NAME} \
     --net=host --cap-add=net_admin --cap-add=sys_nice \
