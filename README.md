@@ -39,5 +39,8 @@ The workaround of this is to use `inotifywait` to monitor event modify of /var/l
 
 This workaround is already in place in `log-modify-monitor.sh` bash file.
 
+## Setup on Google Cloud VM / Instance Template
+To use this docker image on Google Cloud VM with Container-Optimized OS, use [setup.sh](setup.sh) as a startup script.
+
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
